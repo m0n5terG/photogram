@@ -47,4 +47,42 @@ class ProfileController extends Controller
         
     }
 
+    public function postEdit($id)
+   {
+       $data = request()->validate([
+           'description' => 'required',
+           'profilepic' => 'image',
+       ]);
+       // Load the existing profile
+       $user = Auth::user();
+     
+       // Find the corresponding profile with the $id,
+       // Create a new profile if its empty
+       $profile = Profile::find($id);
+       if(empty($profile)){
+           $profile = new Profile();
+           $profile->user_id = $user->id;
+       }
+       $profile->description = request('description');
+       // Save the new profile pic... if there is one in the request()!
+       if (request()->has('profilepic')) {
+           $imagePath = request('profilepic')->store('uploads', 'public');
+           $profile->image = $imagePath;
+       }
+       // Now, save it all into the database
+       $updated = $profile->save();
+       if ($updated) {
+           return redirect('/profile');
+       }
+   }
+
+    public function edit()
+    {
+        $user = Auth::user();
+        $profile = Profile::where('user_id', $user->id)->first();
+        return view('editProfile', [
+            'profile' => $profile
+        ]);
+    }
+
 }
