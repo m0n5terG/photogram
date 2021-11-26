@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profile',
-[App\Http\Controllers\ProfileController::class,
-'index'])->name('profile');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/create', [App\Http\Controllers\ProfileController::class, 'create']);
+Route::post('/profile/postCreate', [App\Http\Controllers\ProfileController::class, 'postCreate'])->name('profile.postCreate');
+Route::get('/profile/edit', [App\Http\Controllers\ProfileController::class, 'edit']);
+Route::post('/profile/{id}/postEdit', [App\Http\Controllers\ProfileController::class, 'postEdit'])->name('profile.postEdit');
