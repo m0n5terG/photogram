@@ -42,13 +42,13 @@ class PostController extends Controller
         ]);
  
         $user = Auth::user();
-        $profile = new Post();
+        $post = new Post();
         $imagePath = request('postpic')->store('uploads', 'public');
  
-        $profile->user_id = $user->id;
-        $profile->caption = request('caption');
-        $profile->image = $imagePath;
-        $saved = $profile->save();
+        $post->user_id = $user->id;
+        $post->caption = request('caption');
+        $post->image = $imagePath;
+        $saved = $post->save();
  
         if ($saved) {
             return redirect('/profile');
