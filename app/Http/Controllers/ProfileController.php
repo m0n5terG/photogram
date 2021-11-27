@@ -11,10 +11,14 @@ class ProfileController extends Controller
     public function index() {
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
+        $posts = \App\Models\Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+        $numPosts = \App\Models\Post::where('user_id', $user->id)->count();
 
         return view('profile', [
             'user' => $user,
             'profile' => $profile,
+            'posts' => $posts,
+            'numPosts' => $numPosts
         ]);
     }
 
