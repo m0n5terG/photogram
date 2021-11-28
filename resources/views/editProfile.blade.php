@@ -7,7 +7,6 @@
             <div class="col-4">
                 <form action="{{ route('profile.postEdit', ['id' => $profile->id]) }}" enctype="multipart/form-data" method="post">
                     @csrf
-                    {{method_field("DELETE")}}
                     <div class="form-group row">
                         <label for="description">Description</label>
                         <input class="form-control" type="text" name="description" id="description" value="{{ $profile->description }}">
