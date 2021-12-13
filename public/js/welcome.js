@@ -2,9 +2,9 @@
 //     alert("Welcome to my web!");
 // });
 
-$(document).ready(function() {
+$(function() {
     $(".me")
-        .fadeIn({duration: 3000})
         .css("display", "none")
-        .slideDown(1000);
+        .slideDown(2000)
+        .addClass("animate__animated animate__rollOut animate__delay-3s");
 });
