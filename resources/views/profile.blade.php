@@ -6,7 +6,7 @@
         <div class="col-md-3">
            <img class="rounded-circle" width="150" height="150" src="/storage/{{ $profile->image }}">
         </div>
-        <div class="col-md-9 pt-2">
+        <div class="col-md-4 pt-2">
            <h3>{{ $user->name }}</h3>
            <span><strong>{{ $numPosts }}</strong> posts</span>
            {{-- <div class="pt-3">{{$profile->description}}</div>
@@ -21,6 +21,9 @@
                     <div class="pt-2"><a href="/profile/edit">Edit profile</a></div>
 
                 @endif
+        </div>
+        <div class="col-md-4 pt-2">
+            
         </div>
     </div>
     <div class="row pt-5">
