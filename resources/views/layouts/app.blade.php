@@ -25,7 +25,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
-<body class="antialiased">
+<body class="{{ $theme . '-theme' }}">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -84,7 +84,6 @@
                             <li class="pt-2">
                                 <input type="checkbox" class="checkbox" id="checkbox">
                                 <label for="checkbox" class="label">
-                                    {{-- <i id="theme-toggle" class="icon-{{ $theme == 'dark' ? 'sun' : 'moon' }}"></i> --}}
                                     <i class="fas fa-moon"></i>
                                     <i class="fas fa-sun"></i>
                                     <div class="ball"></div>
