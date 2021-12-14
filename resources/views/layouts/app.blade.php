@@ -14,16 +14,18 @@
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     <script src="{{ mix('js/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/profile.js') }}"></script>
+    <script defer type="text/javascript" src="{{ asset('js/theme.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
-<body>
+<body class="antialiased">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -42,6 +44,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -74,7 +77,19 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                    
                                 </div>
+                            </li>
+                        
+                            <li class="pt-2">
+                                <input type="checkbox" class="checkbox" id="checkbox">
+                                <label for="checkbox" class="label">
+                                    {{-- <i id="theme-toggle" class="icon-{{ $theme == 'dark' ? 'sun' : 'moon' }}"></i> --}}
+                                    <i class="fas fa-moon"></i>
+                                    <i class="fas fa-sun"></i>
+                                    <div class="ball"></div>
+                                </label>
+
                             </li>
                         @endguest
                     </ul>
@@ -86,5 +101,6 @@
             @yield('content')
         </main>
     </div>
+
 </body>
 </html>
